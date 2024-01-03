@@ -159,20 +159,31 @@ int main() {
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
 
-    // build and compile shaders
-    // -------------------------
+    //==============================loading shaders=========================================
     Shader ourShader("resources/shaders/2.model_lighting.vs", "resources/shaders/2.model_lighting.fs");
 
-    // load models
-    // -----------
-    Model ourModel("resources/objects/backpack/backpack.obj");
-    ourModel.SetShaderTextureNamePrefix("material.");
 
+    //==============================loading models===========================================
+
+    Model campfire("resources/objects/campfire/Campfire.obj");
+    campfire.SetShaderTextureNamePrefix("material.");
+    Model island("resources/objects/isl/island2.obj");
+    island.SetShaderTextureNamePrefix("material.");
+    Model log("resources/objects/log/log/13021_Aquarium_Log_v1_L3.obj");
+    log.SetShaderTextureNamePrefix("material.");
+    Model tree("resources/objects/pine/Tree2.obj");
+    tree.SetShaderTextureNamePrefix("material.");
+    Model ufo("resources/objects/ufo/UFO.obj");
+    ufo.SetShaderTextureNamePrefix("material.");
+    Model alien("resources/objects/alien/alien/10469_GrayAlien_v01.obj");
+    alien.SetShaderTextureNamePrefix("material.");
+
+    //===============================lighting==================================================
     PointLight& pointLight = programState->pointLight;
-    pointLight.position = glm::vec3(4.0f, 4.0, 0.0);
-    pointLight.ambient = glm::vec3(0.1, 0.1, 0.1);
-    pointLight.diffuse = glm::vec3(0.6, 0.6, 0.6);
-    pointLight.specular = glm::vec3(1.0, 1.0, 1.0);
+    pointLight.position = glm::vec3(-2.09394,5.40402,0.707192);
+    pointLight.ambient = glm::vec3(150*0.01, 88*0.01, 34*0.01);
+    pointLight.diffuse = glm::vec3(150*0.1, 88*0.1, 34*0.1);
+    pointLight.specular = glm::vec3(150*0.1, 88*0.1, 34*0.1);
 
     pointLight.constant = 1.0f;
     pointLight.linear = 0.09f;
@@ -197,14 +208,13 @@ int main() {
         processInput(window);
 
 
-        // render
-        // ------
+        // ======================================render=========================================
+        // -----------------------------------setup shaders-------------------------------------
         glClearColor(programState->clearColor.r, programState->clearColor.g, programState->clearColor.b, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // don't forget to enable shader before setting uniforms
         ourShader.use();
-        pointLight.position = glm::vec3(4.0 * cos(currentFrame), 4.0f, 4.0 * sin(currentFrame));
+        //pointLight.position = glm::vec3(4.0 * cos(currentFrame), 4.0f, 4.0 * sin(currentFrame));
         ourShader.setVec3("pointLight.position", pointLight.position);
         ourShader.setVec3("pointLight.ambient", pointLight.ambient);
         ourShader.setVec3("pointLight.diffuse", pointLight.diffuse);
@@ -221,14 +231,106 @@ int main() {
         ourShader.setMat4("projection", projection);
         ourShader.setMat4("view", view);
 
-        // render the loaded model
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model,
-                               programState->backpackPosition); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(programState->backpackScale));    // it's a bit too big for our scene, so scale it down
-        ourShader.setMat4("model", model);
-        ourModel.Draw(ourShader);
+        // ------------------------------------drawing models--------------------------------------
 
+        //Tree 1
+        glm::mat4 model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(-2.49604,5.01492,-1.477451188));
+        model=scale(model,glm::vec3(0.4));
+        ourShader.setMat4("model",model);
+        tree.Draw(ourShader);
+
+        //Alien 1
+         model = glm::mat4(1.0f);
+        //model=scale(model,glm::vec3(0.01));
+        model=glm::translate(model,glm::vec3(-2.9029,5.41774,0.284943));
+        model=scale(model,glm::vec3(0.01));
+        model=glm::rotate(model,glm::radians(-90.0f),glm::vec3(1,0,0));
+        //model=glm::rotate(model,glm::radians(61.1165f),glm::vec3(0,1,0));
+        model=glm::rotate(model,glm::radians(64.0702f),glm::vec3(0,0,1));
+       // model=glm::rotate(model,glm::radians(61.1165f),glm::vec3(0,1,0));
+       // model=glm::rotate(model,glm::radians(-67.8023f),glm::vec3(1,0,0));
+        //model=glm::rotate(model,glm::radians(+64.0702f),glm::vec3(0,0,1));
+
+        //model=scale(model,glm::vec3(0.01));
+       // model=glm::translate(model,glm::vec3(-2.9029,5.41774,0.284943));
+        //model=scale(model,glm::vec3(0.01));
+
+        ourShader.setMat4("model",model);
+        alien.Draw(ourShader);
+
+        //Island 1
+        model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(-2.27991,0.667268,-0.00454823));
+        model=scale(model,glm::vec3(0.5));
+        ourShader.setMat4("model",model);
+        island.Draw(ourShader);
+
+        //Tree 2
+        model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(-1.305,5.11681,-1.19112));
+        model=scale(model,glm::vec3(0.4));
+        ourShader.setMat4("model",model);
+        tree.Draw(ourShader);
+
+        //Tree 3
+        model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(-3.31726,5.11675,-0.963768));
+        model=scale(model,glm::vec3(0.4));
+        ourShader.setMat4("model",model);
+        tree.Draw(ourShader);
+
+        //Log 1
+
+        model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(-3.07426- 0.5,5.33347+0.2,-0.0779114+0.3));
+        model=scale(model,glm::vec3(0.03));
+        model=glm::rotate(model,glm::radians(82.0016f),glm::vec3(0,1,0));
+        ourShader.setMat4("model",model);
+        log.Draw(ourShader);
+
+        //Log 2
+
+        model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(-1.67368,5.57016-0.2,-0.528546-0.3));
+        model=scale(model,glm::vec3(0.03));
+        ourShader.setMat4("model",model);
+        log.Draw(ourShader);
+
+        //Alien 2
+        model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(-1.66348,5.35822,-0.0953785));
+        model=scale(model,glm::vec3(0.01));
+        model=glm::rotate(model,glm::radians(-90.0f),glm::vec3(1,0,0));
+        ourShader.setMat4("model",model);
+        alien.Draw(ourShader);
+
+
+
+
+        //Campfire
+        model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(-2.09394,5.40402,0.707192));
+        model=scale(model,glm::vec3(0.01));
+        ourShader.setMat4("model",model);
+        campfire.Draw(ourShader);
+
+        //UFO
+        model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(4.1918,7.83968,0.513466));
+        model=scale(model,glm::vec3(0.8));
+        ourShader.setMat4("model",model);
+        ufo.Draw(ourShader);
+
+        //Island 2
+        model = glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(4.11355,0.628727,0.572346));
+        model=scale(model,glm::vec3(0.5));
+        ourShader.setMat4("model",model);
+        island.Draw(ourShader);
+
+
+        //---------------------------------------------------------------------------------------------------------
         if (programState->ImGuiEnabled)
             DrawImGui(programState);
 

@@ -1,0 +1,9 @@
+
+newmtl CampfireSG
+Ka 0.200000 0.200000 0.200000
+Kd 0.811765 0.231373 0.521569
+Ks 1.000000 1.000000 1.000000
+Tr 0.000000
+illum 2
+Ns 0.000000
+map_Kd venus_surface.jpg

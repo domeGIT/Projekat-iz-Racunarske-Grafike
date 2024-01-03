@@ -1,0 +1,13 @@
+# Blender MTL File: 'UFO.blend'
+# Material Count: 1
+
+newmtl Material.001
+Ns 0.000000
+Ka 0.652174 0.652174 0.652174
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 22.049999
+d 1.000000
+illum 3
+map_Kd TexturesCom_MetalAircraft0050_1_S lrg.jpg
