@@ -51,6 +51,32 @@ struct PointLight {
     float quadratic;
 };
 
+struct DirLight
+{
+    glm::vec3 direction;
+
+    glm::vec3 specular;
+    glm::vec3 diffuse;
+    glm::vec3 ambient;};
+
+struct SpotLight {
+    glm::vec3 position;
+    glm::vec3 direction;
+
+    float cutOff;
+    float outerCutOff;
+
+    glm::vec3 specular;
+    glm::vec3 diffuse;
+    glm::vec3 ambient;
+
+    float constant;
+    float linear;
+    float quadratic;
+};
+
+
+
 struct ProgramState {
     glm::vec3 clearColor = glm::vec3(0);
     bool ImGuiEnabled = false;
@@ -59,6 +85,8 @@ struct ProgramState {
     glm::vec3 backpackPosition = glm::vec3(0.0f);
     float backpackScale = 1.0f;
     PointLight pointLight;
+    DirLight dirLight;
+    SpotLight spotLight;
     ProgramState()
             : camera(glm::vec3(0.0f, 0.0f, 3.0f)) {}
 
@@ -179,16 +207,32 @@ int main() {
     alien.SetShaderTextureNamePrefix("material.");
 
     //===============================lighting==================================================
+    //pointLight
     PointLight& pointLight = programState->pointLight;
     pointLight.position = glm::vec3(-2.09394,5.40402,0.707192);
     pointLight.ambient = glm::vec3(150*0.01, 88*0.01, 34*0.01);
-    pointLight.diffuse = glm::vec3(150*0.1, 88*0.1, 34*0.1);
+    pointLight.diffuse = glm::vec3(155*0.1, 90*0.1, 35*0.1);
     pointLight.specular = glm::vec3(150*0.1, 88*0.1, 34*0.1);
 
-    pointLight.constant = 1.0f;
-    pointLight.linear = 0.09f;
-    pointLight.quadratic = 0.032f;
+    pointLight.constant = 0.0f;
+    pointLight.linear = 0.05f;
+    pointLight.quadratic = 7.05f;
 
+    //dirLight
+    DirLight& dirLight = programState->dirLight ;
+    dirLight.direction = glm::vec3(-1.0f, -1.0f, -1.0f);
+    dirLight.ambient =   glm::vec3(0.0f, 0.0f, 0.0f);
+    dirLight.diffuse =   glm::vec3( 0.08f, 0.08f, 0.08f);
+    dirLight.specular =  glm::vec3(0.2f, 0.2f, 0.2f);
+
+    //spotLight
+    SpotLight& spotLight = programState->spotLight;
+    spotLight.constant = 1.0f;
+    spotLight.linear = 0.09f;
+    spotLight.quadratic = 0.032f;
+    spotLight.ambient =   glm::vec3(0.0f, 0.0f, 0.0f);
+    spotLight.diffuse =   glm::vec3( 5.0f, 5.0f, 5.0f);
+    spotLight.specular =  glm::vec3(5.0f, 5.0f, 5.0f);
 
 
     // draw in wireframe
@@ -214,7 +258,7 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         ourShader.use();
-        //pointLight.position = glm::vec3(4.0 * cos(currentFrame), 4.0f, 4.0 * sin(currentFrame));
+        //pointLight
         ourShader.setVec3("pointLight.position", pointLight.position);
         ourShader.setVec3("pointLight.ambient", pointLight.ambient);
         ourShader.setVec3("pointLight.diffuse", pointLight.diffuse);
@@ -224,6 +268,24 @@ int main() {
         ourShader.setFloat("pointLight.quadratic", pointLight.quadratic);
         ourShader.setVec3("viewPosition", programState->camera.Position);
         ourShader.setFloat("material.shininess", 32.0f);
+
+        //dirLight
+        ourShader.setVec3("dirLight.direction", dirLight.direction);
+        ourShader.setVec3("dirLight.ambient", dirLight.ambient);
+        ourShader.setVec3("dirLight.diffuse", dirLight.diffuse);
+        ourShader.setVec3("dirLight.specular", dirLight.specular);
+
+        //spotLight
+        ourShader.setVec3("spotLight.position", glm::vec3(4.1918+3,7.83968,0.513466));
+        ourShader.setVec3("spotLight.direction", glm::vec3(0,-1,0));
+        ourShader.setVec3("spotLight.ambient", spotLight.ambient);
+        ourShader.setVec3("spotLight.diffuse",spotLight.diffuse/2.0f);
+        ourShader.setVec3("spotLight.specular", spotLight.specular);
+        ourShader.setFloat("spotLight.constant", spotLight.constant);
+        ourShader.setFloat("spotLight.linear", spotLight.linear);
+        ourShader.setFloat("spotLight.quadratic", spotLight.quadratic);
+        ourShader.setFloat("spotLight.cutOff", glm::cos(glm::radians(10.0f)));
+        ourShader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(60.0f)));
         // view/projection transformations
         glm::mat4 projection = glm::perspective(glm::radians(programState->camera.Zoom),
                                                 (float) SCR_WIDTH / (float) SCR_HEIGHT, 0.1f, 100.0f);
@@ -242,20 +304,10 @@ int main() {
 
         //Alien 1
          model = glm::mat4(1.0f);
-        //model=scale(model,glm::vec3(0.01));
         model=glm::translate(model,glm::vec3(-2.9029,5.41774,0.284943));
         model=scale(model,glm::vec3(0.01));
         model=glm::rotate(model,glm::radians(-90.0f),glm::vec3(1,0,0));
-        //model=glm::rotate(model,glm::radians(61.1165f),glm::vec3(0,1,0));
         model=glm::rotate(model,glm::radians(64.0702f),glm::vec3(0,0,1));
-       // model=glm::rotate(model,glm::radians(61.1165f),glm::vec3(0,1,0));
-       // model=glm::rotate(model,glm::radians(-67.8023f),glm::vec3(1,0,0));
-        //model=glm::rotate(model,glm::radians(+64.0702f),glm::vec3(0,0,1));
-
-        //model=scale(model,glm::vec3(0.01));
-       // model=glm::translate(model,glm::vec3(-2.9029,5.41774,0.284943));
-        //model=scale(model,glm::vec3(0.01));
-
         ourShader.setMat4("model",model);
         alien.Draw(ourShader);
 
@@ -317,14 +369,14 @@ int main() {
 
         //UFO
         model = glm::mat4(1.0f);
-        model=glm::translate(model,glm::vec3(4.1918,7.83968,0.513466));
+        model=glm::translate(model,glm::vec3(4.1918+3,7.83968,0.513466));
         model=scale(model,glm::vec3(0.8));
         ourShader.setMat4("model",model);
         ufo.Draw(ourShader);
 
         //Island 2
         model = glm::mat4(1.0f);
-        model=glm::translate(model,glm::vec3(4.11355,0.628727,0.572346));
+        model=glm::translate(model,glm::vec3(4.11355+3,0.628727,0.572346));
         model=scale(model,glm::vec3(0.5));
         ourShader.setMat4("model",model);
         island.Draw(ourShader);
