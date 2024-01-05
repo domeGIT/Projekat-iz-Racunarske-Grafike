@@ -16,6 +16,7 @@
 
 #include <iostream>
 
+unsigned int loadTexture(char const * path);
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
 void mouse_callback(GLFWwindow *window, double xpos, double ypos);
@@ -187,9 +188,65 @@ int main() {
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
 
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    //=============================pyramid================================================
+    float pyramid[]
+            {
+                //vertices                       //normals                     //tex coordinates
+                -0.5f,-0.5f,-0.5f,   0.0f,0.0f,-1.0f,   0.0f,0.0f,
+                0.5f,-0.5f,-0.5f,   0.0f,0.0f,-1.0f,  1.0f,0.0f,
+                0.0f,0.5f,0.0f,    0.0f,0.0f,-1.0f,   0.5f,1.0f,
+
+                -0.5f,-0.5f,0.5f,   0.0f,0.0f,1.0f,   0.0f,0.0f,
+                0.5f,-0.5f,0.5f,   0.0f,0.0f,1.0f,  1.0f,0.0f,
+                0.0f,0.5f,0.0f,    0.0f,0.0f,1.0f,   0.5f,1.0f,
+
+       //         -0.5f,-0.5f,-0.5f,   -1.0f,0.0f,0.0f,   0.0f,1.0f,
+       //         -0.5f,-0.5f,0.5f,   -1.0f,0.0f,0.0f,   0.0f,0.0f,
+       //        0.0f,0.5f,0.0f,    -1.0f,0.0f,0.0f,   0.5f,1.0f,
+
+       //         0.5f,-0.5f,-0.5f,   1.0f,0.0f,0.0f,  0.0f,1.0f,
+        //        0.5f,-0.5f,0.5f,   1.0f,0.0f,0.0f,  0.0f,0.0f,
+         //       0.0f,0.5f,0.0f,    1.0f,0.0f,0.0f,   0.5f,1.0f,
+
+         //       0.5f,-0.5f,-0.5f,   0.0f,-1.0f,0.0f,  1.0f,1.0f,
+          //      0.5f,-0.5f,0.5f,   0.0f,-1.0f,0.0f,  1.0f,0.0f,
+           //     0.0f,0.5f,0.0f,    0.0f,-1.0f,0.0f,   0.5f,1.0f,
+
+           //     -0.5f,-0.5f,0.5f,   0.0f,1.0f,0.0f,   0.0f,0.0f,
+           //     -0.5f,-0.5f,-0.5f,   0.0f,1.0f,0.0f,   0.0f,1.0f,
+          //      0.0f,0.5f,0.0f,    0.0f,1.0f,0.0f,   0.5f,1.0f
+
+
+
+
+
+            };
+
+
+
+    unsigned int pyramidVAO, pyramidVBO;
+    glGenVertexArrays(1, &pyramidVAO);
+    glGenBuffers(1, &pyramidVBO);
+
+    glBindVertexArray(pyramidVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, pyramidVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(pyramid), pyramid, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6*sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+    unsigned int texture=loadTexture(FileSystem::getPath("resources//textures/teal2.png").c_str());
     //==============================loading shaders=========================================
     Shader ourShader("resources/shaders/2.model_lighting.vs", "resources/shaders/2.model_lighting.fs");
-
+    Shader pyramidShader("resources/shaders/cone_of_light.vs", "resources/shaders/cone_of_light.fs");
 
     //==============================loading models===========================================
 
@@ -215,26 +272,28 @@ int main() {
     pointLight.specular = glm::vec3(150*0.1, 88*0.1, 34*0.1);
 
     pointLight.constant = 0.0f;
-    pointLight.linear = 0.05f;
-    pointLight.quadratic = 7.05f;
+    pointLight.linear = 0.005f;
+    pointLight.quadratic = 8.0f;
 
     //dirLight
     DirLight& dirLight = programState->dirLight ;
     dirLight.direction = glm::vec3(-1.0f, -1.0f, -1.0f);
     dirLight.ambient =   glm::vec3(0.0f, 0.0f, 0.0f);
     dirLight.diffuse =   glm::vec3( 0.08f, 0.08f, 0.08f);
-    dirLight.specular =  glm::vec3(0.2f, 0.2f, 0.2f);
+    dirLight.specular =  glm::vec3(0.1f, 0.1f, 0.1f);
 
     //spotLight
     SpotLight& spotLight = programState->spotLight;
+    spotLight.position=glm::vec3(4.1918+3,7.83968-0.5,0.513466);
+    spotLight.direction=glm::vec3(0,-1,0);
+    spotLight.cutOff=glm::cos(glm::radians(10.0f));
+    spotLight.outerCutOff=glm::cos(glm::radians(60.0f));
+    spotLight.ambient=glm::vec3(0.0f, 0.0f, 0.0f);
+    spotLight.diffuse=glm::vec3( 5.0f, 5.0f, 5.0f);
+    spotLight.specular=glm::vec3(5.0f, 5.0f, 5.0f);
     spotLight.constant = 1.0f;
     spotLight.linear = 0.09f;
     spotLight.quadratic = 0.032f;
-    spotLight.ambient =   glm::vec3(0.0f, 0.0f, 0.0f);
-    spotLight.diffuse =   glm::vec3( 5.0f, 5.0f, 5.0f);
-    spotLight.specular =  glm::vec3(5.0f, 5.0f, 5.0f);
-
-
     // draw in wireframe
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -276,16 +335,16 @@ int main() {
         ourShader.setVec3("dirLight.specular", dirLight.specular);
 
         //spotLight
-        ourShader.setVec3("spotLight.position", glm::vec3(4.1918+3,7.83968,0.513466));
-        ourShader.setVec3("spotLight.direction", glm::vec3(0,-1,0));
+        ourShader.setVec3("spotLight.position", spotLight.position);
+        ourShader.setVec3("spotLight.direction", spotLight.direction);
         ourShader.setVec3("spotLight.ambient", spotLight.ambient);
         ourShader.setVec3("spotLight.diffuse",spotLight.diffuse/2.0f);
         ourShader.setVec3("spotLight.specular", spotLight.specular);
         ourShader.setFloat("spotLight.constant", spotLight.constant);
         ourShader.setFloat("spotLight.linear", spotLight.linear);
         ourShader.setFloat("spotLight.quadratic", spotLight.quadratic);
-        ourShader.setFloat("spotLight.cutOff", glm::cos(glm::radians(10.0f)));
-        ourShader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(60.0f)));
+        ourShader.setFloat("spotLight.cutOff", spotLight.cutOff);
+        ourShader.setFloat("spotLight.outerCutOff", spotLight.outerCutOff);
         // view/projection transformations
         glm::mat4 projection = glm::perspective(glm::radians(programState->camera.Zoom),
                                                 (float) SCR_WIDTH / (float) SCR_HEIGHT, 0.1f, 100.0f);
@@ -293,6 +352,8 @@ int main() {
         ourShader.setMat4("projection", projection);
         ourShader.setMat4("view", view);
 
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_BACK);
         // ------------------------------------drawing models--------------------------------------
 
         //Tree 1
@@ -332,10 +393,11 @@ int main() {
         ourShader.setMat4("model",model);
         tree.Draw(ourShader);
 
+
         //Log 1
 
         model = glm::mat4(1.0f);
-        model=glm::translate(model,glm::vec3(-3.07426- 0.5,5.33347+0.2,-0.0779114+0.3));
+        model=glm::translate(model,glm::vec3(-3.57426,5.53347,-0.0779114+0.3));
         model=scale(model,glm::vec3(0.03));
         model=glm::rotate(model,glm::radians(82.0016f),glm::vec3(0,1,0));
         ourShader.setMat4("model",model);
@@ -344,10 +406,11 @@ int main() {
         //Log 2
 
         model = glm::mat4(1.0f);
-        model=glm::translate(model,glm::vec3(-1.67368,5.57016-0.2,-0.528546-0.3));
+        model=glm::translate(model,glm::vec3(-1.67368,5.37016,-0.828546));
         model=scale(model,glm::vec3(0.03));
         ourShader.setMat4("model",model);
         log.Draw(ourShader);
+
 
         //Alien 2
         model = glm::mat4(1.0f);
@@ -356,8 +419,6 @@ int main() {
         model=glm::rotate(model,glm::radians(-90.0f),glm::vec3(1,0,0));
         ourShader.setMat4("model",model);
         alien.Draw(ourShader);
-
-
 
 
         //Campfire
@@ -369,18 +430,37 @@ int main() {
 
         //UFO
         model = glm::mat4(1.0f);
-        model=glm::translate(model,glm::vec3(4.1918+3,7.83968,0.513466));
+        model=glm::translate(model,glm::vec3(7.1918,7.33968,0.513466));
         model=scale(model,glm::vec3(0.8));
         ourShader.setMat4("model",model);
         ufo.Draw(ourShader);
 
         //Island 2
         model = glm::mat4(1.0f);
-        model=glm::translate(model,glm::vec3(4.11355+3,0.628727,0.572346));
+        model=glm::translate(model,glm::vec3(7.11355,0.628727,0.572346));
         model=scale(model,glm::vec3(0.5));
         ourShader.setMat4("model",model);
         island.Draw(ourShader);
 
+        glDisable(GL_CULL_FACE);
+
+        //-----------------------------------drawing pyramid-------------------------------------------
+        pyramidShader.use();
+        pyramidShader.setMat4("projection", projection);
+        pyramidShader.setMat4("view", view);
+        glBindVertexArray(pyramidVAO);
+        glBindTexture(GL_TEXTURE_2D,texture);
+
+        model=glm::mat4(1.0f);
+        model=glm::translate(model,glm::vec3(7.1918,6.33968,0.513466));
+        model=glm::scale(model,glm::vec3(2.1,2.7,2.1));
+        model=glm::rotate(model,glm::radians(currentFrame*30),glm::vec3(0,1,0));
+        pyramidShader.setMat4("model", model);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+
+        model=glm::rotate(model,glm::radians(90.0f),glm::vec3(0,1,0));
+        pyramidShader.setMat4("model", model);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
 
         //---------------------------------------------------------------------------------------------------------
         if (programState->ImGuiEnabled)
@@ -499,4 +579,41 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         }
     }
+}
+
+unsigned int loadTexture(char const * path)
+{
+    unsigned int textureID;
+    glGenTextures(1, &textureID);
+
+    int width, height, nrComponents;
+    unsigned char *data = stbi_load(path, &width, &height, &nrComponents, 0);
+    if (data)
+    {
+        GLenum format ;
+        if (nrComponents == 1)
+            format = GL_RED;
+        else if (nrComponents == 3)
+            format = GL_RGB;
+        else if (nrComponents == 4)
+            format = GL_RGBA;
+
+        glBindTexture(GL_TEXTURE_2D, textureID);
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        stbi_image_free(data);
+    }
+    else
+    {
+        std::cout << "Texture failed to load at path: " << path << std::endl;
+        stbi_image_free(data);
+    }
+
+    return textureID;
 }
