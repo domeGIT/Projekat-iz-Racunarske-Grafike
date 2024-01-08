@@ -37,7 +37,7 @@ bool hdr = true;
 bool hdrKeyPressed = false;
 bool bloom = true;
 bool bloomKeyPressed = false;
-float exposure = 1.0f;
+float exposure = 0.3f;
 
 // camera
 
@@ -97,7 +97,7 @@ struct ProgramState {
     DirLight dirLight;
     SpotLight spotLight;
     ProgramState()
-            : camera(glm::vec3(0.0f, 0.0f, 3.0f)) {}
+            : camera(glm::vec3(4.29f, 10.02f, 15.49f)) {}
 
     void SaveToFile(std::string filename);
 
@@ -367,12 +367,13 @@ int main() {
 
     vector<std::string> faces
             {
-                    FileSystem::getPath("resources/textures/bkg/blue/bkg1_right.png"),
-                    FileSystem::getPath("resources/textures/bkg/blue/bkg1_left.png"),
-                    FileSystem::getPath("resources/textures/bkg/blue/bkg1_top.png"),
-                    FileSystem::getPath("resources/textures/bkg/blue/bkg1_bot.png"),
-                    FileSystem::getPath("resources/textures/bkg/blue/bkg1_front.png"),
-                    FileSystem::getPath("resources/textures/bkg/blue/bkg1_back.png")
+                    FileSystem::getPath("resources/textures/posx.jpg"),
+                    FileSystem::getPath("resources/textures/negx.jpg"),
+                    FileSystem::getPath("resources/textures/posy.jpg"),
+                    FileSystem::getPath("resources/textures/negy.jpg"),
+                    FileSystem::getPath("resources/textures/posz.jpg"),
+                    FileSystem::getPath("resources/textures/negz.jpg")
+
             };
 
     unsigned int cubemapTexture = loadCubemap(faces);
@@ -539,7 +540,7 @@ int main() {
         model=glm::translate(model,glm::vec3(7.1918,6.33968,0.513466));
         model=glm::scale(model,glm::vec3(2.5,3,2.1));
         model=glm::rotate(model,glm::radians(90.0f),glm::vec3(0,0,1));
-        model=glm::rotate(model,glm::radians(currentFrame*20),glm::vec3(1,0,0));
+        model=glm::rotate(model,glm::radians(currentFrame*2000),glm::vec3(1,0,0));
         pyramidShader.setMat4("model", model);
 
         cone.Draw(pyramidShader);
@@ -557,6 +558,8 @@ int main() {
         glDrawArrays(GL_TRIANGLES, 0, 36);
         glBindVertexArray(0);
         glDepthFunc(GL_LESS); // set depth function back to default
+
+
 
         //-------------------------------------hdr and bloom-----------------------------------------------------------------
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -587,13 +590,6 @@ int main() {
         hdrShader.setBool("bloom", bloom);
         hdrShader.setFloat("exposure", exposure);
         renderQuad();
-
-
-
-
-
-
-
         if (programState->ImGuiEnabled)
             DrawImGui(programState);
 
@@ -607,6 +603,8 @@ int main() {
 
     programState->SaveToFile("resources/program_state.txt");
     delete programState;
+    glDeleteVertexArrays(1, &skyboxVAO);
+    glDeleteBuffers(1, &skyboxVAO);
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
