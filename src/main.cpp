@@ -379,6 +379,7 @@ int main() {
     unsigned int cubemapTexture = loadCubemap(faces);
 
 
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);//disable cursor
 
     // ===========================================render loop============================================================
     while (!glfwWindowShouldClose(window)) {
@@ -590,6 +591,10 @@ int main() {
         hdrShader.setBool("bloom", bloom);
         hdrShader.setFloat("exposure", exposure);
         renderQuad();
+
+
+
+
         if (programState->ImGuiEnabled)
             DrawImGui(programState);
 
@@ -617,8 +622,8 @@ int main() {
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow *window) {
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
+    //if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+      //  glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         programState->camera.ProcessKeyboard(FORWARD, deltaTime);
@@ -691,12 +696,6 @@ void DrawImGui(ProgramState *programState) {
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_F1 && action == GLFW_PRESS) {
         programState->ImGuiEnabled = !programState->ImGuiEnabled;
-        if (programState->ImGuiEnabled) {
-            programState->CameraMouseMovementUpdateEnabled = false;
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-        } else {
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-        }
     }
     if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS && !hdrKeyPressed)// switch hdr on/off
     {
@@ -728,6 +727,8 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
         exposure += 0.1f;
 
     }
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+      glfwSetWindowShouldClose(window, true);
 }
 
 unsigned int quadVAO = 0;
