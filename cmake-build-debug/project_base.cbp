@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="project_base"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\cmake\modules\;CMake Files\configuration\;CMake Files\libs\;CMake Files\libs\glad\;CMake Files\libs\imgui\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="STB_IMAGE">
+				<Option output="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libSTB_IMAGE.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/configuration"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 STB_IMAGE"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="STB_IMAGE/fast">
+				<Option output="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libSTB_IMAGE.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/configuration"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 STB_IMAGE/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="project_base">
+				<Option output="/home/dimitrije/Projekat-iz-Racunarske-Grafike/project_base" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/configuration"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/include"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/glad/include"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 project_base"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="project_base/fast">
+				<Option output="/home/dimitrije/Projekat-iz-Racunarske-Grafike/project_base" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/configuration"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/include"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/glad/include"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 project_base/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad">
+				<Option output="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/libglad.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/glad/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/Makefile&quot;  VERBOSE=1 glad"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad/fast">
+				<Option output="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/libglad.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/glad/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/Makefile&quot;  VERBOSE=1 glad/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/glad/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="imgui">
+				<Option output="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/libimgui.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/glad/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/Makefile&quot;  VERBOSE=1 imgui"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="imgui/fast">
+				<Option output="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/libimgui.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include"/>
+					<Add directory="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/glad/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/Makefile&quot;  VERBOSE=1 imgui/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake-build-debug/libs/imgui/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/glad/include/glad/glad.h">
+			<Option target="glad"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/glad/src/glad.c">
+			<Option target="glad"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include/imconfig.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include/imgui.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include/imgui_impl_glfw.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include/imgui_impl_opengl3.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include/imgui_internal.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include/imstb_rectpack.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include/imstb_textedit.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/include/imstb_truetype.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/src/imgui.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/src/imgui_demo.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/src/imgui_draw.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/src/imgui_impl_glfw.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/src/imgui_impl_opengl3.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/src/imgui_tables.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/src/imgui_widgets.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/stb_image.cpp">
+			<Option target="STB_IMAGE"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/src/main.cpp">
+			<Option target="project_base"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake/modules/FindASSIMP.cmake">
+			<Option virtualFolder="CMake Files\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/cmake/modules/FindGLFW3.cmake">
+			<Option virtualFolder="CMake Files\cmake\modules\"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/configuration/root_directory.h.in">
+			<Option virtualFolder="CMake Files\configuration\"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/glad/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glad\"/>
+		</Unit>
+		<Unit filename="/home/dimitrije/Projekat-iz-Racunarske-Grafike/libs/imgui/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\imgui\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

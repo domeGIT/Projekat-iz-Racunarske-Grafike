@@ -20,7 +20,7 @@
 		"files" : 
 		[
 			"CMakeLists.txt",
-			"/snap/clion/261/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindOpenGL.cmake"
+			"/snap/clion/263/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindOpenGL.cmake"
 		],
 		"nodes" : 
 		[

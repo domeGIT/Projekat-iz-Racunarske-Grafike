@@ -2,6 +2,8 @@
 
 Nekada davno u galaksiji daleko, daleko... dva vanzemaljca su zalozili vatru na ostrvu u svemiru , dok je treci parkirao UFO na susednom.
 
+snimak : https://youtu.be/LBgKpRp2dPE
+
 # Implementirano
 
 -sve teme od 1. nedelje zakljucno sa 8. nedeljom;
@@ -20,13 +22,13 @@ Nekada davno u galaksiji daleko, daleko... dva vanzemaljca su zalozili vatru na 
 
 -Kretanje kroz prostor:
 	
-	**W** - napred
+	W - napred
 	
-	**S** - unazad
+	S - unazad
 	
-	**A** - levo
+	A - levo
 	
-	**D** - desno
+	D - desno
 
 
 -Pomeranje misa rotira kameru
